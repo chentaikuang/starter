@@ -20,25 +20,40 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
         </dependency>
-        <!-- 本机绝对路径 -->
+
+        <!-- 本机绝对路径引用依赖 -->
+        <!--        <dependency>-->
+        <!--            <groupId>com.xiaochen.starter</groupId>-->
+        <!--            <artifactId>shard</artifactId>-->
+        <!--            <version>0.0.1-SNAPSHOT</version>-->
+        <!--            <scope>system</scope>-->
+        <!--            <systemPath>-->
+        <!--                C:/chentk/osc/starter/shard/target/shard-0.0.1-SNAPSHOT.jar-->
+        <!--            </systemPath>-->
+        <!--        </dependency>-->
+
+        <!--        <dependency>-->
+        <!--            <groupId>com.xiaochen.starter</groupId>-->
+        <!--            <artifactId>dingtalk</artifactId>-->
+        <!--            <version>0.0.1-SNAPSHOT</version>-->
+        <!--            <scope>system</scope>-->
+        <!--            <systemPath>-->
+        <!--                C:/chentk/osc/starter/dingtalk/target/dingtalk-0.0.1-SNAPSHOT.jar-->
+        <!--            </systemPath>-->
+        <!--        </dependency>-->
+
+        <!-- 远程中央仓库引入依赖 -->
         <dependency>
             <groupId>com.xiaochen.starter</groupId>
             <artifactId>shard</artifactId>
             <version>0.0.1-SNAPSHOT</version>
-            <scope>system</scope>
-            <systemPath>
-                C:/chentk/osc/starter/shard/target/shard-0.0.1-SNAPSHOT.jar
-            </systemPath>
         </dependency>
         <dependency>
             <groupId>com.xiaochen.starter</groupId>
             <artifactId>dingtalk</artifactId>
             <version>0.0.1-SNAPSHOT</version>
-            <scope>system</scope>
-            <systemPath>
-                C:/chentk/osc/starter/dingtalk/target/dingtalk-0.0.1-SNAPSHOT.jar
-            </systemPath>
         </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>

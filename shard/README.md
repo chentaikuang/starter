@@ -30,6 +30,6 @@ public User findUserById(String userId) {
 1）github下载项目到本地，导入到IDE
 2）cd到项目主路径，执行编译命令：mvn clean install -U
 注意：如编译报错，test子模块找不到shard.jar依赖包，修改本模块的pom文件jar路径为本机绝对路径即可
-3）运行文件ShardApplication
+3）测试入口:TestApplication
 
 # 其他
