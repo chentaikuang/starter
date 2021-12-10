@@ -27,7 +27,7 @@
             <version>0.0.1-SNAPSHOT</version>
             <scope>system</scope>
             <systemPath>
-                C:/chentk/osc/starter/shard/target/shard-0.0.1-SNAPSHOT.jar
+                C:/starter/shard/target/shard-0.0.1-SNAPSHOT.jar
             </systemPath>
         </dependency>
         <dependency>
@@ -36,7 +36,7 @@
             <version>0.0.1-SNAPSHOT</version>
             <scope>system</scope>
             <systemPath>
-                C:/chentk/osc/starter/dingtalk/target/dingtalk-0.0.1-SNAPSHOT.jar
+                C:/starter/dingtalk/target/dingtalk-0.0.1-SNAPSHOT.jar
             </systemPath>
         </dependency>
         <dependency>
