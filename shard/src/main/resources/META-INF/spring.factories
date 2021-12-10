@@ -1,0 +1,2 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.xiaochen.starter.shard.config.ShardTableAutoConfigure

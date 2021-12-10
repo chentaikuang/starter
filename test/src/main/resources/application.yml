@@ -1,0 +1,58 @@
+server:
+  port: 8899
+
+spring:
+  application:
+    name: starter-test
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    password: 123456
+    url: jdbc:mysql://localhost:3306/test?useSSL=false&useUnicode=true&characterEncoding=utf-8&autoReconnect=true&serverTimezone=Asia/Shanghai
+    username: root
+  profiles:
+    active: dev
+
+  redis:
+    host: 127.0.0.1
+    port: 6379
+
+#系统日志级别
+logging:
+  level:
+    root: info
+    com:
+      xiaochen:
+        starter:
+          test:
+            config: debug
+            dao: debug
+          dingtalk:
+            config: debug
+            service: debug
+
+mybatis:
+  config-location: classpath:mybatis.xml
+  mapper-locations: classpath:com/xiaochen/starter/test/mapper/*Mapper.xml
+
+#com:
+#  xiaochen:
+#    starter:
+#      shard:
+#        enabled: true
+#        mybatis:
+#          table:
+#            rules:
+#              - tableName: user
+#                tableNumber: 2
+#              - tableName: user_info
+#                tableNumber: 2
+#      dingtalk:
+#        enabled: true
+#        apps:
+#          - name: test
+#            token: f0f0559c79b4ff1ae932b3ac69067a7e74740526a33f029176ede37c3d5f065f
+#            secret: SECb971a62520cbbe891ea5d307ce892bfe9a407ea161d7ed81a664e14ad1bb293c
+#          - name: bcp
+#            token: ee15602dee75fb7553ef818b5bd07274652b412d6d4c17fa8a69af333c126e64
+#            secret: SEC3a73c02b673c3261aa7758d34a72830584fb02aaed1c2aa2c826ba243cab80fd
+
