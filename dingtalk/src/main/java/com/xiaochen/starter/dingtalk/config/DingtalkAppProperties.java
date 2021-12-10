@@ -10,6 +10,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.util.Assert;
 
 import javax.annotation.PostConstruct;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -17,6 +18,7 @@ import java.util.stream.Collectors;
 @Slf4j
 @Data
 @ConfigurationProperties(prefix = CommonConst.DING_TALK_CONFIG)
+
 public class DingtalkAppProperties {
 
 //    @Value("${spring.application.name}")
@@ -34,7 +36,8 @@ public class DingtalkAppProperties {
 
         if (CollectionUtils.isEmpty(apps)) {
             log.error("dingtalkApp config isEmpty");
-            throw new Exception("未找到钉钉APP配置信息");
+            dingtalkAppMap = Collections.emptyMap();
+            return;
         }
 
         checkAppsParam();
