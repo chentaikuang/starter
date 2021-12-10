@@ -36,7 +36,7 @@ public class DingtalkService {
      * @param title   标题
      * @param content 内容
      */
-    public static void send(String title, String content, String... dingtalkKey) {
+    public void send(String title, String content, String... dingtalkKey) {
         send(title, content, null, dingtalkKey);
     }
 
@@ -46,7 +46,7 @@ public class DingtalkService {
      * @param throwable    异常
      * @param dingtalkName 钉钉name
      */
-    public static void send(String title, String content, Throwable throwable, String... dingtalkName) {
+    public void send(String title, String content, Throwable throwable, String... dingtalkName) {
         try {
             MarkdownMessage markdownMessage = buildMsg(title, content, throwable);
             postReq(markdownMessage, dingtalkName);
@@ -55,7 +55,7 @@ public class DingtalkService {
         }
     }
 
-    private static void postReq(MarkdownMessage message, String... dingtalkName) {
+    private void postReq(MarkdownMessage message, String... dingtalkName) {
         try {
             HttpClient httpclient = HttpClientBuilder.create().build();
             String reqUrl = appendReqUrl((dingtalkName == null || dingtalkName.length == 0) ? "" : dingtalkName[0]);
@@ -77,7 +77,7 @@ public class DingtalkService {
         }
     }
 
-    private static String appendReqUrl(String appName) throws NoSuchAlgorithmException, InvalidKeyException, UnsupportedEncodingException {
+    private String appendReqUrl(String appName) throws NoSuchAlgorithmException, InvalidKeyException, UnsupportedEncodingException {
         Long timestamp = System.currentTimeMillis();
         DingtalkApp dingtalkApp = chooseDingtalk(appName);
         String sign = convertSign(timestamp, dingtalkApp.getSecret());
@@ -91,7 +91,7 @@ public class DingtalkService {
     }
 
 
-    private static DingtalkApp chooseDingtalk(String dingtalkKey) {
+    private DingtalkApp chooseDingtalk(String dingtalkKey) {
         if (StringUtils.isNotBlank(dingtalkKey) && DingtalkAppProperties.dingtalkAppMap.containsKey(dingtalkKey)) {
             return DingtalkAppProperties.dingtalkAppMap.get(dingtalkKey);
         }
@@ -102,7 +102,7 @@ public class DingtalkService {
         return dingtalkApp;
     }
 
-    private static String convertSign(Long timestamp, String secret) throws NoSuchAlgorithmException, InvalidKeyException, UnsupportedEncodingException {
+    private String convertSign(Long timestamp, String secret) throws NoSuchAlgorithmException, InvalidKeyException, UnsupportedEncodingException {
         String stringToSign = timestamp + "\n" + secret;
         Mac mac = Mac.getInstance(CommonConst.HMAC_SHA_256);
         mac.init(new SecretKeySpec(secret.getBytes(CHARSET_NAME), CommonConst.HMAC_SHA_256));
@@ -112,7 +112,7 @@ public class DingtalkService {
         return sign;
     }
 
-    private static MarkdownMessage buildMsg(String title, String content, Throwable throwable) {
+    private MarkdownMessage buildMsg(String title, String content, Throwable throwable) {
         MarkdownMessage message = new MarkdownMessage();
         title = StringUtils.isBlank(title) ? "钉钉通知消息" : title;
         message.setTitle(title);
@@ -126,12 +126,12 @@ public class DingtalkService {
         return message;
     }
 
-    private static String curDate() {
+    private String curDate() {
         return DateFormatUtils.format(new Date(), "yyyy-MM-dd HH:mm:ss");
     }
 
     //转换异常堆栈信息
-    private static void convertThrowableStack(Throwable t, MarkdownMessage message) {
+    private void convertThrowableStack(Throwable t, MarkdownMessage message) {
         if (t != null) {
 
             List<StackTraceElement> list = new LinkedList<>();

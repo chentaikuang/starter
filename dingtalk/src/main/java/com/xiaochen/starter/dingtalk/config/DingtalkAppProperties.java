@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 
 @Slf4j
 @Data
-@ConfigurationProperties(prefix = CommonConst.DING_TALK_CONFIG)
+@ConfigurationProperties(prefix = CommonConst.DING_TALK_BASE_PATH)
 
 public class DingtalkAppProperties {
 
@@ -31,11 +31,11 @@ public class DingtalkAppProperties {
     @PostConstruct
     public void init() throws Exception {
 
-        log.error(CommonConst.ONE_TIPS, "PostConstruct");
+        log.warn(CommonConst.ONE_TIPS, "PostConstruct");
 //        log.error(CommonConst.TWO_TIPS, "current app name", curAppName);
 
         if (CollectionUtils.isEmpty(apps)) {
-            log.error("dingtalkApp config isEmpty");
+            log.warn("dingtalkApp config isEmpty");
             dingtalkAppMap = Collections.emptyMap();
             return;
         }

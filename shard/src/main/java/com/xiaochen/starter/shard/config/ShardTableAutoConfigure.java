@@ -51,7 +51,7 @@ public class ShardTableAutoConfigure implements InitializingBean {
     @Override
     public void afterPropertiesSet() throws Exception {
 
-        log.error(LogConst.ONE_TIPS, "afterPropertiesSet");
+        log.warn(LogConst.ONE_TIPS, "afterPropertiesSet");
 
         Iterator var3 = this.sqlSessionFactoryList.iterator();
         while (var3.hasNext()) {

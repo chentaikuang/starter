@@ -25,7 +25,7 @@ public class ShardTableStarterProperties {
     @PostConstruct
     public void init() throws Exception {
 
-        log.error(LogConst.ONE_TIPS, "PostConstruct");
+        log.warn(LogConst.ONE_TIPS, "PostConstruct");
 
         if (CollectionUtils.isEmpty(rules)) {
             log.warn("shardTable rules isEmpty");

@@ -35,7 +35,7 @@ public class UserService {
     public User mergeInfo(User user) {
         //Aop内部方法调用无法被拦截处理
         User user1 = AppContextUtil.getClzBean(UserService.class).findUserById(user.getId());
-        log.error(user1.toString());
+        log.warn(user1.toString());
         return userMapper.queryByUsername(user.getUsername());
     }
 }
