@@ -6,14 +6,17 @@ import com.xiaochen.starter.dingtalk.service.DingtalkService;
 import com.xiaochen.starter.test.entity.User;
 import com.xiaochen.starter.test.service.UserService;
 import com.xiaochen.starter.test.util.RedisUtil;
+import com.xiaochen.starter.test.util.ThreadUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.http.client.utils.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Date;
 import java.util.Random;
 import java.util.Set;
 
@@ -99,5 +102,18 @@ public class TestController {
                     new RuntimeException(RandomStringUtils.randomAlphanumeric(8)), "XXX");
         }
         return RandomStringUtils.randomNumeric(2);
+    }
+
+    //http://localhost:8899/test/api/thread?id=1
+    @RequestMapping("/thread")
+    public void thread(String id) {
+//        synchronized () sleep join yield
+        log.warn("ST [{}] -> {}", id, DateUtils.formatDate(new Date()));
+        if ("s".equals(id)) {
+            ThreadUtil.sleep(10_000);
+        } else if ("j".equalsIgnoreCase(id)) {
+            ThreadUtil.joinThread(10_000);
+        }
+        log.warn("ED [{}] -> {}", id, DateUtils.formatDate(new Date()));
     }
 }
